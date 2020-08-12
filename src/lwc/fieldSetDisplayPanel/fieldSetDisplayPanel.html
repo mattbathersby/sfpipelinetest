@@ -1,0 +1,45 @@
+<template>
+
+    <div class="slds-section slds-is-open">
+        
+        <template if:true={collapsible}> 
+            <h3 class="slds-section__title" onclick={toggleSection}>
+                <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
+                    <lightning-icon size="x-small" icon-name="utility:switch" class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"></lightning-icon>
+                    <span class="slds-truncate" title={panelLabel}>{panelLabel}</span>
+                </button>
+            </h3>
+        </template>
+        <template if:false={collapsible}>
+            <h3 class="slds-section__title slds-theme_shade">
+                <span class="slds-truncate slds-p-horizontal_small" title={panelLabel}>{panelLabel}</span>
+            </h3>
+        </template>
+
+        <div aria-hidden="false" class="slds-section__content">
+            <template if:true={isLoading}>
+                <div class="slds-is-relative" style="height: 80px;">
+                    <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+                </div>
+            </template>
+            <template if:false={isLoading}>
+                <template if:true={hasError}>
+                    <div class="slds-text-color_error slds-p-around_x-small">
+                        {error.statusText}: {error.body.message}
+                    </div>
+                </template>
+                <template if:false={hasError}>
+                    <lightning-record-view-form record-id={recordId} object-api-name={objectApiName}>
+                        <div class="slds-grid slds-wrap slds-p-horizontal_x-small">
+                            <template for:each={fieldNames} for:item="field">
+                                <div class={columnClass} key={field}>
+                                    <lightning-output-field field-name={field}></lightning-output-field>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-record-view-form>
+                </template>
+            </template>
+        </div>
+    </div>
+</template>

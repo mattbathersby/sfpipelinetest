@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Field Set Display Panel</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property label="Field Set API Name" name="fieldSetApiName" type="String"  required="true" />
+            <property label="Panel Label" name="panelLabel" type="String" required="true" default="Data Panel" />
+            <property label="Panel Columns" name="columns" type="string" datasource="1,2,3,4,5,6" default="1" required="true" />
+            <property label="Is Collapsible?" name="collapsible" type="Boolean" default="false" required="true" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
