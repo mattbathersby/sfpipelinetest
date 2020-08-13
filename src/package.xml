@@ -9,5 +9,5 @@
         <members>fieldSetDisplayPanel</members>
         <name>LightningComponentBundle</name>
     </types>
-    <version>47.0</version>
+    <version>49.0</version>
 </Package>
