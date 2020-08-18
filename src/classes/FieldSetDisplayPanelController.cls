@@ -1,6 +1,4 @@
 public with sharing class FieldSetDisplayPanelController {
-    
-    /* WOOGY WOOGY */
 
     @AuraEnabled (cacheable=true)
     public static List<String> getFieldNames(string fieldSetApiName, string sObjectName){
